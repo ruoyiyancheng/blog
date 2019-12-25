@@ -1,7 +1,17 @@
 //1 引用express框架
 const express = require('express');
+//6 引入路径资源文件
+const path = require('path');
 //2 创建网站服务器
 const app = express();
+//8 告诉express框架模板所在位置
+app.set('views',path.join(__dirname,'views'));
+//9 告诉express框架模板的默认后缀
+app.set('view engine','art');
+//10 当渲染后缀为art的模板时，所使用的模板引擎是什么
+app.engine('art',require('express-art-template'));
+//7 开放静态资源文件
+app.use(express.static(path.join(__dirname,'public')));
 //4 引入路由模块
 const home = require('./route/home');
 const admin = require('./route/admin')
