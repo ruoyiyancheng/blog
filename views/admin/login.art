@@ -43,8 +43,17 @@
         $('#loginform').on('submit',function(){
             // result=[];
            var result = serializeArrayToJson($(this))
+           if(result.email.trim().length == 0 ){
+               alert('请输入邮件地址');
+               return false;
+           }
+
+           if(result.password.trim().length == 0 ){
+               alert('请输入密码');
+               return false;
+           }
            console.log(result);
-           return false;
+        //    return false;
         });
     </script>
 </body>
