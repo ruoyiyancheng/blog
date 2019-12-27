@@ -2,11 +2,15 @@
 const express = require('express');
 //6 引入路径资源文件
 const path = require('path');
+//12 引入body-parser请求
+const bodyParser = require('body-parser');
 //2 创建网站服务器
 const app = express();
 // require('./module/user')
 //11 数据库连接模块
 require('./module/connect')
+//13 处理post请求参数
+app.use(bodyParser.urlencoded({extended:false}))
 //8 告诉express框架模板所在位置
 app.set('views',path.join(__dirname,'views'));
 //9 告诉express框架模板的默认后缀

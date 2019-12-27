@@ -6,6 +6,9 @@ const admin = express.Router();
 admin.get('/login',(req,res) => {
     res.render('admin/login')
 });
+admin.post('/login',(req,res) => {
+    res.send(req.body)
+})
 //4 创建用户路由列表
 admin.get('/user',(req,res) => {
     res.render('admin/user')
