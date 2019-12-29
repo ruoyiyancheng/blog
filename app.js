@@ -4,6 +4,12 @@ const express = require('express');
 const path = require('path');
 //创建网站服务器
 const app = express();
+//告诉路由模板所在的位置
+app.set('views',path.join(__dirname,'views'));
+//告诉模板默认的后缀名
+app.set('view engine','art');
+//使用何种方式渲染模板
+app.engine('art',require('express-art-template'));
 app.use(express.static(path.join(__dirname,'public')));
 //引入路由模块
 const admin = require('./route/admin');
