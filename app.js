@@ -1,7 +1,10 @@
 // 引用express框架
 const express = require('express');
+//引入路径
+const path = require('path');
 //创建网站服务器
 const app = express();
+app.use(express.static(path.join(__dirname,'public')));
 //引入路由模块
 const admin = require('./route/admin');
 const home = require('./route/home');
