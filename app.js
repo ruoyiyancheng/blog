@@ -4,6 +4,8 @@ const express = require('express');
 const path = require('path');
 //创建网站服务器
 const app = express();
+//require('./model/user');
+require('./model/connect');
 //告诉路由模板所在的位置
 app.set('views',path.join(__dirname,'views'));
 //告诉模板默认的后缀名
