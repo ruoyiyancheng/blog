@@ -2,10 +2,14 @@
 const express = require('express');
 //引入路径
 const path = require('path');
+//引入body-parser参数，用来请求body-parser请求参数
+const bodyParser = require('body-parser');
 //创建网站服务器
 const app = express();
 //require('./model/user');
 require('./model/connect');
+//处理post请求
+app.use(bodyParser.urlencoded({extended:false}));
 //告诉路由模板所在的位置
 app.set('views',path.join(__dirname,'views'));
 //告诉模板默认的后缀名
