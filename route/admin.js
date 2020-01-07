@@ -2,6 +2,7 @@ const express = require('express');
 
 //导入用户集合构造函数
 const { User } = require('../model/user');
+const bcrypt = require('bcrypt');
 const admin = express.Router();
 
 admin.get('/login',(req,res) => {
@@ -16,8 +17,11 @@ admin.post('/login',async(req,res) => {
 	//如果没有查询到用户 user变量为空
 	let user = await User.findOne({email});
 	if(user){
-		//查询到用户
-		if(password == user.password){
+		//查询到用户  在当前页面对密码进行了比对
+		let isValid = await bcrypt.compare(password,user.password);
+		console.log(user.password);
+		if( isValid ){
+			req.session.username = user.username;
 			res.send('登录成功');
 		}else{
 			res.status(400).render('admin/error',{msg:'邮件地址或者密码错误'});	
@@ -29,7 +33,10 @@ admin.post('/login',async(req,res) => {
 });
 
 admin.get('/user',(req,res) => {
-	res.render('admin/user')
+	res.render('admin/user',{
+
+		msg:req.session.username
+	})
 });
 
 module.exports = admin;

@@ -33,7 +33,8 @@ const User = mongoose.model('User',userSchema);
 
 async function createUser () {
     const salt = await bcrypt.genSalt(10);
-    const pass = await bcrypt.hash('12356',salt);
+    const pass = await bcrypt.hash('123456',salt);
+    console.log(pass);
     const user = await User.create({
         username:'itemheima',
         email:'itheima@163.com',
@@ -44,7 +45,7 @@ async function createUser () {
     
 }
 
-createUser();
+// createUser();
 //创建集合
 
 //将用户集合作为模块成员进行导出
