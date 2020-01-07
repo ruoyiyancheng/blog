@@ -6,7 +6,7 @@ const path = require('path');
 const bodyParser = require('body-parser');
 //创建网站服务器
 const app = express();
-//require('./model/user');
+// require('./model/user');
 require('./model/connect');
 //处理post请求
 app.use(bodyParser.urlencoded({extended:false}));
