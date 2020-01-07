@@ -21,8 +21,12 @@ admin.post('/login',async(req,res) => {
 		let isValid = await bcrypt.compare(password,user.password);
 		console.log(user.password);
 		if( isValid ){
+
 			req.session.username = user.username;
-			res.send('登录成功');
+			req.app.locals.userInfo = user;
+			// res.send('登录成功');
+			//重定向到用户列表页面
+			res.redirect('/admin/user');
 		}else{
 			res.status(400).render('admin/error',{msg:'邮件地址或者密码错误'});	
 		}
@@ -33,10 +37,7 @@ admin.post('/login',async(req,res) => {
 });
 
 admin.get('/user',(req,res) => {
-	res.render('admin/user',{
-
-		msg:req.session.username
-	})
-});
+	res.render('admin/user');
+})
 
 module.exports = admin;
