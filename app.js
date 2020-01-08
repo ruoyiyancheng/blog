@@ -24,6 +24,22 @@ app.use(express.static(path.join(__dirname,'public')));
 //引入路由模块
 const admin = require('./route/admin');
 const home = require('./route/home');
+
+//拦截请求，判断用户登录状态
+app.use('/admin',(req,res,next) => {
+    //判断用户访问的是否是登录页面
+    //判断用户的登录状态
+    //如果用户是登录 将请求放行
+    //如果用户不是登录 将请求重定向
+    if( req.url != '/login' && !req.session.username){
+        //用户的请求路径不是login并且session中用户名为空者重定向
+        res.redirect('/admin/login');
+    }else{
+        //用户是请求状态 将请求放行
+        next();
+    }
+});
+
 //设置拦截规则
 app.use('/home',home);
 app.use('/admin',admin);
