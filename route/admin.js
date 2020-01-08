@@ -1,43 +1,16 @@
 const express = require('express');
 
-//导入用户集合构造函数
-const { User } = require('../model/user');
-const bcrypt = require('bcrypt');
 const admin = express.Router();
 
-admin.get('/login',(req,res) => {
-	res.render('admin/login')
-});
+admin.get('/login',require('./admin/loginPage'));
 
-admin.post('/login',async(req,res) => {
-	const {email,password} = req.body;
-	if (email.trim().length == 0  || password.trim().length == 0) return res.status(400).render('admin/error',{msg:'邮件地址或者密码错误'});
-	//根据用户地址查询用户信息
-	//如果查询到了用户 user变量的值为对象类型 对象用存储的是用户信息
-	//如果没有查询到用户 user变量为空
-	let user = await User.findOne({email});
-	if(user){
-		//查询到用户  在当前页面对密码进行了比对
-		let isValid = await bcrypt.compare(password,user.password);
-		console.log(user.password);
-		if( isValid ){
+//实现登录功能
+admin.post('/login',require('./admin/login'));
 
-			req.session.username = user.username;
-			req.app.locals.userInfo = user;
-			// res.send('登录成功');
-			//重定向到用户列表页面
-			res.redirect('/admin/user');
-		}else{
-			res.status(400).render('admin/error',{msg:'邮件地址或者密码错误'});	
-		}
-	} else {
-		//没有查询到用户
-		res.status(400).render('admin/error',{msg:'邮件地址或者密码错误'});
-	}
-});
+//实现用户列表路由
+admin.get('/user',require('./admin/userPage'));
 
-admin.get('/user',(req,res) => {
-	res.render('admin/user');
-})
+//实现退出功能
+admin.get('./logout',require('./admin/logOut'));
 
 module.exports = admin;
