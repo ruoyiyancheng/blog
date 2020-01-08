@@ -31,6 +31,11 @@ app.use('/admin',require('./middleware/loginGuard'));
 //设置拦截规则
 app.use('/home',home);
 app.use('/admin',admin);
+//错误处理中间件
+app.use((err,req,res,next) => {
+    const result = JSON.parse(err);
+    res.redirect(`${result.path}?message=${result.message}`);
+})
 //监听端口
 app.listen(80);
 //测试代码
