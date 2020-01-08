@@ -13,4 +13,10 @@ admin.get('/user',require('./admin/userPage'));
 //实现退出功能
 admin.get('./logout',require('./admin/logOut'));
 
+//创建用户编辑页面路由
+admin.get('/user-edit',require('./admin/user-edit'));
+
+//创建实现用户添加路由功能
+admin.post('/user-edit',require('./admin/user-edit-fn'));
+
 module.exports = admin;
