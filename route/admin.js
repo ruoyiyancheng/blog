@@ -19,6 +19,7 @@ admin.get('/user-edit',require('./admin/user-edit'));
 //创建实现用户添加路由功能
 admin.post('/user-edit',require('./admin/user-edit-fn'));
 
-admin.post('/user/modify',require('./admin/user-modify'));
+//实现用户修改路由
+admin.post('/user-modify',require('./admin/user-modify'));
 
 module.exports = admin;
