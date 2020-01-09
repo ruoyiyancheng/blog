@@ -12,6 +12,8 @@ const template = require('art-template');
 const dateFormat = require('dateformat');
 //导入morgan模块
 const morgan = require('morgan');
+//导入config模块
+const config = require('config');
 //创建网站服务器
 const app = express();
 // require('./model/user');
@@ -36,6 +38,7 @@ template.defaults.imports.dateFormat = dateFormat;
 
 app.use(express.static(path.join(__dirname,'public')));
 
+console.log(config.get('title'));
 //获取系统环境变量 返回值是对象
 if( process.env.NODE_ENV == 'development'){
 

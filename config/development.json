@@ -1,0 +1,8 @@
+{
+    "db":{
+        "user": "root",
+        "host": "localhost",
+        "port": "27017",
+        "name": "blog"
+    }
+}
