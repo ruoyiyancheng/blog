@@ -12,7 +12,11 @@ const app = express();
 require('./model/connect');
 //处理post请求
 app.use(bodyParser.urlencoded({extended:false}));
-//配置
+//配置session
+
+
+
+//session配置功能有部分未完成
 app.use(session({secret:'secret key'}));
 //告诉路由模板所在的位置
 app.set('views',path.join(__dirname,'views'));
