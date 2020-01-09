@@ -22,4 +22,13 @@ admin.post('/user-edit',require('./admin/user-edit-fn'));
 //实现用户修改路由
 admin.post('/user-modify',require('./admin/user-modify'));
 
+//建立删除用户功能路由
+admin.get('/delete',require('./admin/user-delete'));
+
+//文章列表页面路由
+admin.get('/article',require('./admin/article'));
+
+//文章编辑页面路由
+admin.get('/article-edit',require('./admin/article-edit'));
+
 module.exports = admin;
