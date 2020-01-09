@@ -10,6 +10,8 @@ const session = require('express-session');
 const template = require('art-template');
 //导入dateformat第三方模块
 const dateFormat = require('dateformat');
+//导入morgan模块
+const morgan = require('morgan');
 //创建网站服务器
 const app = express();
 // require('./model/user');
@@ -33,6 +35,17 @@ app.engine('art',require('express-art-template'));
 template.defaults.imports.dateFormat = dateFormat;
 
 app.use(express.static(path.join(__dirname,'public')));
+
+//获取系统环境变量 返回值是对象
+if( process.env.NODE_ENV == 'development'){
+
+    console.log('当前是开发环境');
+    //在开发环境中将客户端发送到服务器端的请求信息打印到控制台中
+    app.use(morgan('dev'));
+}else {
+    console.log('当前是生产环境')
+} 
+
 //引入路由模块
 const admin = require('./route/admin');
 const home = require('./route/home');
