@@ -26,7 +26,7 @@ const mongoose = require('mongoose');
     }
 })
 //根据规则创建集合
-const Article = mongoose.model('Article');
+const Article = mongoose.model('Article',articleSchema);
 
 //将集合规则做为模块成员导出
 module.exports = {
