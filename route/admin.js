@@ -11,7 +11,7 @@ admin.post('/login',require('./admin/login'));
 admin.get('/user',require('./admin/userPage'));
 
 //实现退出功能
-admin.get('./logout',require('./admin/logOut'));
+admin.get('/logout',require('./admin/logOut'));
 
 //创建用户编辑页面路由
 admin.get('/user-edit',require('./admin/user-edit'));
