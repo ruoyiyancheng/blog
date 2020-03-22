@@ -92,7 +92,7 @@
             $('.delete').on('click',function () {
                 //获取用户id
                 var id = $(this).attr('data-id');
-                alert(id);
+                // alert(id);
                 //将要删除的id存储在隐藏域中
                 $('#deleteArticleId').val(id);
             });
