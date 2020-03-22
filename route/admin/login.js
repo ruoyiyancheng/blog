@@ -1,4 +1,3 @@
-
 //导入用户集合构造函数
 const { User } = require('../../model/user');
 const bcrypt = require('bcrypt');

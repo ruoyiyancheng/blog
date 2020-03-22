@@ -13,4 +13,6 @@ module.exports= async (req,res) => {
     res.render('home/default.art',{
         result: result
     });
+    //测试代码
+    // res.send(result);
 }

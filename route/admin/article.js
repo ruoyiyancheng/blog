@@ -44,4 +44,5 @@ module.exports = async (req, res) => {
 	res.render('admin/article.art', {
 		articles: articles
 	});
+	// res.send(articles);
 }

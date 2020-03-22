@@ -58,7 +58,7 @@
 			      </a>
                 </li>
             </ul>
-            <!-- /分页 -->
+            <!-- /分页 --> 
         </div>
     </div>
     <!-- /主体内容 -->
@@ -84,7 +84,7 @@
     <!-- /删除确认弹出框 -->
     {{ /block }}
 
-    {{block 'script'}}
+    {{block 'script'}} 
         <script type="text/javascript">
             $('.delete').on('click',function () {
                 //获取用户id

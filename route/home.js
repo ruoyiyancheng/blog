@@ -8,5 +8,6 @@ home.get('/',require('./home/index'));
 
 home.get('/article',require('./home/article'));
 
-home.post('/comment',require('./home/comment'))
+home.post('/comment',require('./home/comment'));
+
 module.exports = home;

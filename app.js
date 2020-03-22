@@ -21,10 +21,6 @@ require('./model/connect');
 //处理post请求
 app.use(bodyParser.urlencoded({extended:false}));
 //配置session
-
-
-
-//session配置功能有部分未完成
 app.use(session({secret:'secret key'}));
 //告诉路由模板所在的位置
 app.set('views',path.join(__dirname,'views'));
@@ -60,17 +56,17 @@ app.use('/admin',require('./middleware/loginGuard'));
 app.use('/home',home);
 app.use('/admin',admin);
 // 错误处理中间件
-app.use((err,req,res,next) => {
-    const result = JSON.parse(err);
-    let params = [];
-    for(let attr in result){
-        if(attr != 'path') {
+// app.use((err,req,res,next) => {
+//     const result = JSON.parse(err);
+//     let params = [];
+//     for(let attr in result){
+//         if(attr != 'path') {
            
-            params.push( attr + '=' + result[attr]);
-        }
-    }
-    res.redirect(`${result.path}?${params.join('&')}`);
-})
+//             params.push( attr + '=' + result[attr]);
+//         }
+//     }
+//     res.redirect(`${result.path}?${params.join('&')}`);
+// })
 //监听端口
 app.listen(80);
 //测试代码
