@@ -14,5 +14,5 @@ module.exports = async (req,res) => {
         publishDate:publishDate,
         content:content
     });
-    res.send('ok');
+    res.redirect('/admin/article');
 }

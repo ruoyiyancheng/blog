@@ -11,16 +11,16 @@ module.exports = async (req,res) => {
         let article = await Article.findOne({_id:id});
         res.render('admin/article-edit',{
             article:article,
-            link:'/admin/user-modify?id=' + id,
+            link:'/admin/article-modify?id=' + id,
             button:'修改',
             methods:'post'
         });
     }else {
         //添加操作 
         res.render('admin/article-edit',{
-            link:'/admin/article',
+            link:'/admin/article-add',
             button:'添加',
-            methods:'get'
+            methods:'post'
         });
     }
     
